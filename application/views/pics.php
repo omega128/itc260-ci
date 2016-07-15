@@ -4,7 +4,19 @@
 $this->load->view($this->config->item('theme') . 'header');
 ?>
 
-<h2>Pictures of "<?=$tags?>"</h2>
+<h2>Picture Search</h2>
+<p>Suggested search tags: 
+<?=anchor('pics/view/mariners','mariners')?>,
+<?=anchor('pics/view/seahawks','seahawks')?>,
+<?=anchor('pics/view/sounders','sounders')?>
+</p>
+
+<?php
+  if ($tags != "") {
+    echo "<h2>Flickr search results for &quot;" . $tags . "&quot;</h2>";
+  }
+  
+?>
 
 <table>
 <tr>
@@ -20,7 +32,7 @@ if ($pics->stat != "fail") {
         $size = 'm';
         $photo_url = 'http://farm'. $pic->farm . '.staticflickr.com/' . $pic->server . '/' . $pic->id . '_' . $pic->secret . '_' . $size . '.jpg';
 
-        // start a new row of the table every so often, to organize them nicer.
+        // start a new row of the table every 4 pics
         if ($counter >= $row_size) {
             echo "</tr><tr>";
             $counter = 0;
@@ -32,7 +44,6 @@ if ($pics->stat != "fail") {
         echo $pic->title;
         echo "</td>";
     }
-
 }
 ?>
 </tr>

@@ -17,18 +17,7 @@ class Pics_model extends CI_Model {
         $url.= '&format=json';
         $url.= '&nojsoncallback=1';
 
-//        $response = file_get_contents($url);
-//        $response = $url;       
-//        if ($response['stat'] != 'fail') {
-//            feedback("Could not stat!", "alert");
-//        }
-//        $pics = $response->photos->photo;
-         
         $response = json_decode(file_get_contents($url));
-
-        
-
- 
         return $response;
     }
 }

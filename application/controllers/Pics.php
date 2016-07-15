@@ -15,7 +15,7 @@ class Pics extends CI_Controller {
                 
         $data['title'] = "Pictures!";
         $data['tags'] = $tags;
-        $data['pics'] = $this->pics_model->get_pics($tags);        
+        $data['pics'] = $this->pics_model->get_pics($tags);
         
         $this->load->view('pics', $data);
     }
